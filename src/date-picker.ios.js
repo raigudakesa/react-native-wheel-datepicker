@@ -9,11 +9,13 @@ export default class DatePicker extends PureComponent {
     minimumDate: PropTypes.instanceOf(Date),
     mode: PropTypes.oneOf(['date', 'time', 'datetime']),
     onDateChange: PropTypes.func.isRequired,
+    minuteInterval: PropTypes.number,
   };
 
   static defaultProps = {
     mode: 'date',
     date: new Date(),
+    minuteInterval: 1,
   };
 
   state = {
