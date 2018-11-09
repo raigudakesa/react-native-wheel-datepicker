@@ -20,6 +20,7 @@ export default class DatePicker extends PureComponent {
 
   state = {
     date: null,
+    minuteInterval: 1,
   };
 
   onDateChange = (date) => {
@@ -31,14 +32,19 @@ export default class DatePicker extends PureComponent {
     this.setState({ date: this.props.date });
   }
 
+  componentDidMount() {
+    this.setState({ minuteInterval: this.props.minuteInterval });
+  }
+
   componentWillReceiveProps({ date }) {
-    this.setState({ date });
+    this.setState({ date, minuteInterval: this.props.minuteInterval });
   }
 
   render() {
     return (
       <DatePickerIOS
         {...this.props}
+        minuteInterval={this.state.minuteInterval}
         onDateChange={this.onDateChange}
         date={this.state.date}
       />
